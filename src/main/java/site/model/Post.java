@@ -2,17 +2,29 @@ package site.model;
 
 public class Post
 {
+    private int id;
     private String header;
     private String text;
     private String imageFileName;
     private String data;
     
-    public Post(String header, String text, String imageFileName, String data)
+    public Post(int id, String header, String text, String imageFileName, String data)
     {
+        this.id = id;
         this.header = header;
         this.text = text;
         this.imageFileName = imageFileName;
         this.data = data;
+    }
+    
+    public int getId()
+    {
+        return id;
+    }
+    
+    public void setId(int id)
+    {
+        this.id = id;
     }
     
     public String getHeader()
