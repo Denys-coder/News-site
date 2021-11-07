@@ -1,16 +1,3 @@
-// ЗАДАЧА
-// сделать новостной сайт используя
-// Spring Boot MVC,
-// Beans,
-// основы Spring Boot Security,
-// JDBC,
-// DAO,
-// JUnit
-
-
-// 1) создать JDBC запросы в функциях PostDAO
-
-
 package site.config;
 
 import org.springframework.boot.SpringApplication;
