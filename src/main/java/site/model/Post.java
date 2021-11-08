@@ -1,20 +1,22 @@
 package site.model;
 
+import java.util.Date;
+
 public class Post
 {
     private int id;
     private String header;
-    private String text;
     private String imageFileName;
-    private String data;
+    private String text;
+    private Date creationDate;
     
-    public Post(int id, String header, String text, String imageFileName, String data)
+    public Post(int id, String header, String imageFileName, String text, Date creationDate)
     {
         this.id = id;
         this.header = header;
-        this.text = text;
         this.imageFileName = imageFileName;
-        this.data = data;
+        this.text = text;
+        this.creationDate = creationDate;
     }
     
     public int getId()
@@ -37,16 +39,6 @@ public class Post
         this.header = header;
     }
     
-    public String getText()
-    {
-        return text;
-    }
-    
-    public void setText(String text)
-    {
-        this.text = text;
-    }
-    
     public String getImageFileName()
     {
         return imageFileName;
@@ -57,13 +49,23 @@ public class Post
         this.imageFileName = imageFileName;
     }
     
-    public String getData()
+    public String getText()
     {
-        return data;
+        return text;
     }
     
-    public void setData(String data)
+    public void setText(String text)
     {
-        this.data = data;
+        this.text = text;
+    }
+    
+    public Date getCreationDate()
+    {
+        return creationDate;
+    }
+    
+    public void setCreationDate(Date creationDate)
+    {
+        this.creationDate = creationDate;
     }
 }
