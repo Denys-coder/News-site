@@ -57,6 +57,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- postgres driver -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.3.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
