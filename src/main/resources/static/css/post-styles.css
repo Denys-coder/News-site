@@ -1,0 +1,35 @@
+*
+{
+    box-sizing: border-box;
+}
+
+.header
+{
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.post
+{
+    background: lightgrey;
+}
+
+.text
+{
+    width: 80%;
+}
+
+img
+{
+    width: 70%;
+}
+
+a {
+    background-color: #405cf5;
+    color: white;
+    border-radius: 6px;
+    font-size: 1.2em;
+    padding: 15px 25px;
+    text-decoration: none;
+    display:inline-block;
+}

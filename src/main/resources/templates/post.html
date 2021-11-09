@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="${post.getHeader()}"></title>
+        <link href="../css/post-styles.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <!-- back button -->
+        <a href="/posts">Back</a>
+        
+        <!-- header -->
+        <p th:text="${post.getHeader()}" class="header"></p>
+        
+        <!-- image -->
+        <img th:src="${'/images/' + post.getImageFileName()}"/>
+        
+        <!-- text -->
+        <p th:text="${post.getText()}" class="text"></p>
+        
+        <!-- date -->
+        <p th:text="${'Date: ' + #dates.format(post.getCreationDate(),'dd/MMM/YYYY')}"></p>
+    </body>
+</html>
