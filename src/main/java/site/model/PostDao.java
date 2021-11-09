@@ -14,7 +14,7 @@ public class PostDao
     {
         ArrayList<Post> posts = new ArrayList<>();
         
-        String sqlQuery = "SELECT * FROM news;";
+        String sqlQuery = "SELECT * FROM news ORDER BY id;";
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sqlQuery)
