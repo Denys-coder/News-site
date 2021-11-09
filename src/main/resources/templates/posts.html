@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>News</title>
-</head>
-<body>
-    <img th:src="${image}" alt="picture"/>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>News</title>
+        <link href="../css/posts-styles.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div th:each="post: ${posts}" class="post">
+            <!-- Header link -->
+            <a th:href="${'/posts/' + post.getId()}">
+                <p th:text="${post.getHeader()}" class="header"></p>
+            </a>
+            
+            <!-- part of the text -->
+            <p th:text="${post.getText()}"></p>
+            
+            <!-- date -->
+            <p th:text="${'Date: ' + post.getCreationDate().getDay() + ':'
+            + (post.getCreationDate().getMonth() + 1) + ':'
+            + (post.getCreationDate().getYear() + 1900)}"></p>
+        </div>
+    </body>
 </html>
