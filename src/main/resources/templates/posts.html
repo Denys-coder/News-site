@@ -6,10 +6,11 @@
         <link href="../css/posts-styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <h1 class="main-heading">News site</h1>
         <div th:each="post: ${posts}" class="post">
             <!-- header link -->
             <a th:href="${'/posts/' + post.getId()}">
-                <p th:text="${post.getHeader()}" class="header"></p>
+                <p th:text="${post.getHeader()}" class="news-header"></p>
             </a>
             
             <!-- part of the text -->

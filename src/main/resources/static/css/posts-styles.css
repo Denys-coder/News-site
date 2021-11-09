@@ -1,4 +1,10 @@
-.header
+.main-heading
+{
+    color: blue;
+    font-size: 3em;
+}
+
+.news-header
 {
     font-size: 2em;
     font-weight: 700;
