@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"/>
-<head>
-    <meta charset="UTF-8">
-    <title>Admin page</title>
-</head>
-<body>
-    <p>This is an admin page</p>
-</body>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Admin page</title>
+        <link href="/css/admin-styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <a href="/admin/create">Create new post</a>
+        <a href="/posts?modify=true">Update post<hr>Delete post</a>
+    </body>
 </html>
