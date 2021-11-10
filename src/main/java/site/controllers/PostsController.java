@@ -4,17 +4,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import site.model.Post;
 import site.model.PostDao;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 @Controller
 public class PostsController
 {
     @GetMapping("/posts")
-    public String showPosts(Model model)
+    public String showPosts(HttpServletRequest request, Model model, @RequestParam(value = "modify", required = false) boolean modify)
     {
+        if (modify && request.isUserInRole("ADMIN"))
+        {
+            model.addAttribute("modify", true);
+        }
+        
         // truncate text to 150 characters and add " ..."
         ArrayList<Post> posts = PostDao.getAllPosts();
         for (Post post : posts)
