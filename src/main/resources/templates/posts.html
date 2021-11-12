@@ -8,6 +8,7 @@
     <body>
         <h1 class="main-heading">News site</h1>
         <div th:each="post: ${posts}" class="post">
+            
             <!-- header link -->
             <a th:href="${'/posts/' + post.getId()}">
                 <p th:text="${post.getHeader()}" class="news-header"></p>
