@@ -10,6 +10,10 @@ public class Post
     private String text;
     private Date creationDate;
     
+    public Post()
+    {
+    }
+    
     public Post(int id, String header, String imageFileName, String text, Date creationDate)
     {
         this.id = id;
