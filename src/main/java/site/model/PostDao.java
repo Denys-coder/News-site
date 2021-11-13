@@ -2,7 +2,6 @@ package site.model;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,26 +10,26 @@ import java.util.ArrayList;
 @Component
 public class PostDao
 {
-    public static String DATABASE_URL;
-    public static String USER;
-    public static String PASSWORD;
+    public static String databaseUrl;
+    public static String user;
+    public static String password;
     
     @Value("${url}")
     public void setUrlStatic(String url)
     {
-        PostDao.DATABASE_URL = url;
+        PostDao.databaseUrl = url;
     }
     
     @Value("${user}")
     public void setUserStatic(String user)
     {
-        PostDao.USER = user;
+        PostDao.user = user;
     }
     
     @Value("${password}")
     public void setPasswordStatic(String password)
     {
-        PostDao.PASSWORD = password;
+        PostDao.password = password;
     }
     
     public static ArrayList<Post> getAllPosts()
@@ -38,7 +37,7 @@ public class PostDao
         ArrayList<Post> posts = new ArrayList<>();
         
         String sqlQuery = "SELECT * FROM news ORDER BY id;";
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
+        try (Connection connection = DriverManager.getConnection(databaseUrl, user, password);
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sqlQuery)
         )
@@ -66,7 +65,7 @@ public class PostDao
     {
         String sqlQuery = "INSERT INTO news VALUES (DEFAULT, ?, ?, ?, ?);";
         
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
+        try (Connection connection = DriverManager.getConnection(databaseUrl, user, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
@@ -87,7 +86,7 @@ public class PostDao
     {
         String sqlQuery = "DELETE FROM news WHERE id = ?;";
         
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
+        try (Connection connection = DriverManager.getConnection(databaseUrl, user, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
@@ -105,7 +104,7 @@ public class PostDao
     {
         String sqlQuery = "UPDATE news SET header = ? WHERE id = ?;";
         
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
+        try (Connection connection = DriverManager.getConnection(databaseUrl, user, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
@@ -124,7 +123,7 @@ public class PostDao
     {
         String sqlQuery = "UPDATE news SET text = ? WHERE id = ?;";
         
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
+        try (Connection connection = DriverManager.getConnection(databaseUrl, user, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
@@ -143,7 +142,7 @@ public class PostDao
     {
         String sqlQuery = "UPDATE news SET image_filename = ? WHERE id = ?;";
         
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
+        try (Connection connection = DriverManager.getConnection(databaseUrl, user, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
@@ -162,7 +161,7 @@ public class PostDao
     {
         String sqlQuery = "UPDATE news SET creation_date = ? WHERE id = ?;";
         
-        try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
+        try (Connection connection = DriverManager.getConnection(databaseUrl, user, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
