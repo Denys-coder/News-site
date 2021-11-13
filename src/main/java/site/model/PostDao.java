@@ -1,14 +1,37 @@
 package site.model;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.sql.*;
 import java.util.ArrayList;
 
 // do not confuse java.util.Date and java.sql.Date
+@Component
 public class PostDao
 {
-    static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/news";
-    static final String USER = "postgres";
-    static final String PASSWORD = "123";
+    public static String DATABASE_URL;
+    public static String USER;
+    public static String PASSWORD;
+    
+    @Value("${url}")
+    public void setUrlStatic(String url)
+    {
+        PostDao.DATABASE_URL = url;
+    }
+    
+    @Value("${user}")
+    public void setUserStatic(String user)
+    {
+        PostDao.USER = user;
+    }
+    
+    @Value("${password}")
+    public void setPasswordStatic(String password)
+    {
+        PostDao.PASSWORD = password;
+    }
     
     public static ArrayList<Post> getAllPosts()
     {
@@ -39,19 +62,18 @@ public class PostDao
         return posts;
     }
     
-    public static void addPost(Post newPost)
+    public static void addPost(String header, String imageFileName, String text, Date creationDate)
     {
-        String sqlQuery = "INSERT INTO news VALUES (?, ?, ?, ?, ?);";
-    
+        String sqlQuery = "INSERT INTO news VALUES (DEFAULT, ?, ?, ?, ?);";
+        
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
-            preparedStatement.setInt(1, newPost.getId());
-            preparedStatement.setString(2, newPost.getHeader());
-            preparedStatement.setString(3, newPost.getImageFileName());
-            preparedStatement.setString(4, newPost.getText());
-            preparedStatement.setDate(5, new java.sql.Date(newPost.getCreationDate().getTime()));
+            preparedStatement.setString(1, header);
+            preparedStatement.setString(2, imageFileName);
+            preparedStatement.setString(3, text);
+            preparedStatement.setDate(4, new java.sql.Date(creationDate.getTime()));
             
             preparedStatement.executeUpdate();
         }
@@ -70,7 +92,7 @@ public class PostDao
         )
         {
             preparedStatement.setInt(1, postId);
-        
+            
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)
@@ -82,14 +104,14 @@ public class PostDao
     public static void updateHeader(String header, int postId)
     {
         String sqlQuery = "UPDATE news SET header = ? WHERE id = ?;";
-    
+        
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
             preparedStatement.setString(1, header);
             preparedStatement.setInt(2, postId);
-        
+            
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)
@@ -101,14 +123,14 @@ public class PostDao
     public static void updateText(String text, int postId)
     {
         String sqlQuery = "UPDATE news SET text = ? WHERE id = ?;";
-    
+        
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
             preparedStatement.setString(1, text);
             preparedStatement.setInt(2, postId);
-        
+            
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)
@@ -120,14 +142,14 @@ public class PostDao
     public static void updateImageName(String imageFilename, int postId)
     {
         String sqlQuery = "UPDATE news SET image_filename = ? WHERE id = ?;";
-    
+        
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
             preparedStatement.setString(1, imageFilename);
             preparedStatement.setInt(2, postId);
-        
+            
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)
@@ -139,14 +161,14 @@ public class PostDao
     public static void updateDate(java.util.Date date, int postId)
     {
         String sqlQuery = "UPDATE news SET creation_date = ? WHERE id = ?;";
-    
+        
         try (Connection connection = DriverManager.getConnection(DATABASE_URL, USER, PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
             preparedStatement.setDate(1, new java.sql.Date(date.getTime()));
             preparedStatement.setInt(2, postId);
-        
+            
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)
