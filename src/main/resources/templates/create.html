@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Create Post</title>
+        <link href="/css/create-styles.css" rel="stylesheet" type="text/css">
+        <script src="/js/processSelectedFile.js"></script>
+        <script src="/js/resetCreateForm.js"></script>
+    </head>
+    <body>
+        <h1>Create new post</h1>
+        <form th:action="@{/admin/create}" method="post" enctype="multipart/form-data">
+            
+            <!-- header -->
+            <input name="heading" type="text" id="heading" minlength="8" maxlength="150" size="50" required
+                   placeholder="Enter heading">
+            <br><br>
+            
+            <!-- image -->
+            <label for="image" id="image-label">Choose an image file</label>
+            <input name="image" type="file" id="image" accept="image/*" onchange="processSelectedFile(this)">
+            <br><br>
+            
+            <!-- post text -->
+            <textarea name="text" id="text" rows="8" cols="50" placeholder="Enter news text"></textarea>
+            <br><br>
+            
+            <!-- date -->
+            <input name="date" type="date" id="date">
+            <br><br>
+            
+            <!-- reset button -->
+            <input id="reset" type="reset" value="Reset" onclick="resetCreateForm()">
+            <br><br>
+            
+            <!-- send button -->
+            <input id="send" type="submit" value="Send">
+        
+        </form>
+    </body>
+</html>
