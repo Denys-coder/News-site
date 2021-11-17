@@ -14,7 +14,7 @@
         <p th:text="${post.getHeader()}" class="header"></p>
         
         <!-- image -->
-        <img th:unless="${post.getImageFileName().equals(&quot;&quot;)}" th:src="${'/images/' + post.getImageFileName()}"/>
+        <img th:if="${post.getImageFileName() != null}" th:src="${'/images/' + post.getImageFileName()}"/>
         
         <!-- text -->
         <p th:text="${post.getText()}" class="text"></p>
