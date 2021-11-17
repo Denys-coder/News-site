@@ -1,7 +1,7 @@
 INSERT INTO news
 VALUES (DEFAULT,
         'The US is reopening its borders to Europe, the global epicenter of Covid-19',
-        'img1.png',
+        'img1',
         'Paris (CNN)The United States has reopened its borders to vaccinated international travelers, ending a 20-month travel ban at the same moment Europe is battling a surge of Covid-19 cases that has pushed the continent back into the epicenter of the pandemic.
          Fully vaccinated travelers from 33 countries -- including the United Kingdom and much of Europe -- can now enter the US without needing to quarantine, provided they have proof of vaccination and a negative viral test.
          Families and friends separated since the start of the pandemic streamed into airports across major European cities on Monday morning, excited to see loved ones for the first time since former President Donald Trump imposed tough travel restrictions at the outset of the pandemic in an effort to control the virus.
@@ -12,7 +12,7 @@ VALUES (DEFAULT,
         '2001-01-01'),
        (DEFAULT,
         'AMD continues to put pressure on Intel by nearing 25% CPU market share',
-        'img2.png',
+        'img2',
         'AMD''s phoenix-like rise from the ashes isn''t thanks to some miracle, but rather years of hard work to cement itself as serious competition against rival Intel in the CPU market once again. It seems like that''s starting to pay off, with Hardware Times reporting on the latest Mercury Research results, finding that Team Red has gained revenue share for the sixth straight quarter.
         Not only that, but this increase also resulted in the chipmaker hitting a milestone for x86 CPU market share, currently holding 24.6% in Q3 2021. This is the second-highest x86 share for AMD ever, just short of its highest share of 25.3% dating back to Q4 2006.
         On top of its desktop success, AMD notebook x86 unit share (excluding IoT, or Internet of Things) was 22%, an all-time high for the company.
@@ -21,12 +21,12 @@ VALUES (DEFAULT,
         '2002-02-02'),
        (DEFAULT,
         'Samsung Galaxy S22 rumors: February release date, leaked photos and more',
-        'img3.png',
+        'img3',
         'We still have some time until Samsung takes the wraps off its latest flagship lineup, but rumors about the new phones continue to buzz in the meantime. Following the allegedly leaked pictures of the Galaxy S22, the latest gossip from leaker Jon Prosser says Samsung''s new smartphone will be revealed at an Unpacked event in February. Samsung''s August event excited us with two new foldable phones, the Galaxy Z Fold 3 and Z Flip 3, alongside the company''s latest smartwatch, the Galaxy Watch 4, and the Galaxy Buds 2. Then in October, Samsung showed off more options to customize its foldable phones. But we still don''t know exactly when Samsung will take the wraps off the rumored Galaxy S22. This year''s Galaxy S21 lineup was unveiled in January, which could mean we''ll see Samsung''s new flagship early next year. The Samsung Galaxy S21 impressed us with its solid all-round performance and better balance of features and price. And the Galaxy S21 Ultra blew us away with its incredible camera setup and its ability to take superb zoomed-in shots. But what about the follow-up series? We''re curious to see what the Galaxy S22 might bring, so here''s what we think.',
         '2003-03-03'),
        (DEFAULT,
         'George W. Bush shares wedding photo to honor anniversary with wife Laura',
-        'img4.png',
+        'img4',
         'A day after celebrating his wife''s birthday, George W. Bush is cherishing their 44th wedding anniversary.
          The 43rd president marked the occasion on Friday by sharing a photo on Instagram of him and former first lady Laura Bush cutting the cake at their wedding back in 1977. "November is a special month in our house. Not only did we get to celebrate my beautiful wife’s birthday yesterday, but also the great gift of marriage today. Happy Anniversary @laurawbush!"
          The couple got married three months after they first met at a friend''s barbecue in Texas and went on a date the next day to play miniature golf.
@@ -34,7 +34,7 @@ VALUES (DEFAULT,
         '2004-04-04'),
        (DEFAULT,
         'Rush-hour delays after accident on State Highway 2, Wellington',
-        'img5.png',
+        'img5',
         'Rush-hour traffic has backed up following a crash on State Highway 2 between Ngauranga and Petone on Monday afternoon.
          Police were notified of the accident about 4.30 pm, a police spokesperson said.
          A car collided with a barrier, she said.
