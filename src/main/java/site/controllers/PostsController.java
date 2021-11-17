@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import site.model.Post;
 import site.model.PostDao;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
@@ -42,7 +41,7 @@ public class PostsController
     @GetMapping("/posts/{id}")
     public String showPostById(Model model, @PathVariable("id") int id)
     {
-        model.addAttribute("post", PostDao.getAllPosts().get(id - 1));
+        model.addAttribute("post", PostDao.getPostById(id));
         return "post";
     }
 }
