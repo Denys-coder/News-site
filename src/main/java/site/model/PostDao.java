@@ -2,7 +2,6 @@ package site.model;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -61,24 +60,58 @@ public class PostDao
         return posts;
     }
     
-    public static void addPost(String header, String imageFileName, String text, Date creationDate)
+    public static Post getPostById(int idToGet)
     {
-        String sqlQuery = "INSERT INTO news VALUES (DEFAULT, ?, ?, ?, ?);";
-        
+        String sqlQuery = "SELECT * FROM news WHERE id = ?";
+    
         try (Connection connection = DriverManager.getConnection(databaseUrl, user, password);
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
+        )
+        {
+            preparedStatement.setInt(1, idToGet);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            
+            int postId = resultSet.getInt("id");
+            String header = resultSet.getString("header");
+            String imageFileName = resultSet.getString("image_filename");
+            String text = resultSet.getString("text");
+            java.util.Date creationDate = new java.util.Date(resultSet.getDate("creation_date").getTime());
+            
+            resultSet.close();
+            
+            return new Post(postId, header, imageFileName, text, creationDate);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static int addPost(String header, String imageFileName, String text, java.sql.Date creationDate)
+    {
+        String sqlQuery = "INSERT INTO news VALUES (DEFAULT, ?, ?, ?, ?)";
+        
+        try (Connection connection = DriverManager.getConnection(databaseUrl, user, password);
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)
         )
         {
             preparedStatement.setString(1, header);
             preparedStatement.setString(2, imageFileName);
             preparedStatement.setString(3, text);
             preparedStatement.setDate(4, new java.sql.Date(creationDate.getTime()));
-            
+    
             preparedStatement.executeUpdate();
+    
+            ResultSet keys = preparedStatement.getGeneratedKeys();
+            keys.next();
+            return keys.getInt(1);
         }
         catch (SQLException e)
         {
             e.printStackTrace();
+            return -1;
         }
     }
     
