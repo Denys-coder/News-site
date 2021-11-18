@@ -64,8 +64,7 @@ public class AdminController
         File file = new File("src/main/resources/static/images/img" + id);
         file.delete();
         
-        return "/";
-//        return "redirect:/admin/update-or-delete";
+        return "redirect:/admin/update-or-delete";
     }
     
     @GetMapping("/admin/update")
