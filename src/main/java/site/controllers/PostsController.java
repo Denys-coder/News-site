@@ -14,11 +14,11 @@ import java.util.ArrayList;
 public class PostsController
 {
     @GetMapping("/posts")
-    public String showPosts(HttpServletRequest request, Model model, @RequestParam(value = "modify", required = false) boolean modify)
+    public String showPosts(HttpServletRequest request, Model model, @RequestParam(value = "update", required = false) boolean update)
     {
-        if (modify && request.isUserInRole("ADMIN"))
+        if (update && request.isUserInRole("ADMIN"))
         {
-            model.addAttribute("modify", true);
+            model.addAttribute("update", true);
         }
         
         // truncate text to 150 characters and add " ..."

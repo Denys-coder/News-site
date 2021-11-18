@@ -50,9 +50,36 @@ public class AdminController
         return "redirect:/admin";
     }
     
-    @GetMapping("admin/modify-or-delete")
-    protected String modifyOrDelete()
+    @GetMapping("admin/update-or-delete")
+    protected String updateOrDelete()
     {
-        return "forward:/posts?modify=true";
+        return "forward:/posts?update=true";
+    }
+    
+    @PostMapping("/admin/delete")
+    protected String deletePost(@RequestParam("id") int id)
+    {
+        PostDao.deletePost(id);
+        
+        File file = new File("src/main/resources/static/images/img" + id);
+        file.delete();
+        
+        return "/";
+//        return "redirect:/admin/update-or-delete";
+    }
+    
+    @GetMapping("/admin/update")
+    protected String updateForm(@RequestParam("id") int id)
+    {
+        return "/";
+    }
+    
+    @PostMapping("/admin/update")
+    protected String update(@RequestParam("heading") String header,
+                            @RequestParam("image") MultipartFile image,
+                            @RequestParam("text") String text,
+                            @RequestParam("date") java.sql.Date sqlDate)
+    {
+        return "/";
     }
 }
