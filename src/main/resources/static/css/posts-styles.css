@@ -14,3 +14,21 @@
 {
     background: lightblue;
 }
+
+#delete-button, #update-button
+{
+    background-color: #405cf5;
+    color: white;
+    border-radius: 6px;
+    font-size: 1em;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    border: none;
+}
+
+form
+{
+    display: inline-block;
+}

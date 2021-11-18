@@ -20,6 +20,18 @@
             <!-- date -->
             <p th:text="${'Date: ' + #dates.format(post.getCreationDate(),'dd/MMM/YYYY')}"></p>
             
+            <!-- delete button -->
+            <form th:if="${update}" method="post" th:action="@{/admin/delete}">
+                <input type="hidden" name="id" th:value="${post.getId()}">
+                <button type="submit" id="delete-button">Delete</button>
+            </form>
+            
+            <!-- update button -->
+            <form th:if="${update}" method="get" th:action="@{/admin/update}">
+                <input type="hidden" name="id" th:value="${post.getId()}">
+                <button type="submit" id="update-button">Update</button>
+            </form>
+        
         </div>
     </body>
 </html>
