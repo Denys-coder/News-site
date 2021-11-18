@@ -190,7 +190,7 @@ public class PostDao
         }
     }
     
-    public static void updateDate(java.util.Date date, int postId)
+    public static void updateDate(java.sql.Date sqlDate, int postId)
     {
         String sqlQuery = "UPDATE news SET creation_date = ? WHERE id = ?;";
         
@@ -198,7 +198,7 @@ public class PostDao
              PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)
         )
         {
-            preparedStatement.setDate(1, new java.sql.Date(date.getTime()));
+            preparedStatement.setDate(1, sqlDate);
             preparedStatement.setInt(2, postId);
             
             preparedStatement.executeUpdate();
