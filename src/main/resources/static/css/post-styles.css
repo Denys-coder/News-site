@@ -24,12 +24,13 @@ img
     width: 70%;
 }
 
-a {
+a
+{
     background-color: #405cf5;
     color: white;
     border-radius: 6px;
     font-size: 1.2em;
     padding: 15px 25px;
     text-decoration: none;
-    display:inline-block;
+    display: inline-block;
 }
