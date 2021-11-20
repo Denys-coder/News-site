@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Create Post</title>
+        <link href="/css/update-styles.css" rel="stylesheet" type="text/css">
+        <script src="/js/processSelectedFile.js"></script>
+        <script src="/js/resetCreateForm.js"></script>
+        <script src="/js/concealImageInput.js"></script>
+    </head>
+    <body>
+        <h1>Update post</h1>
+        <form th:action="@{/admin/update}" method="post" enctype="multipart/form-data">
+            
+            <!-- id -->
+            <input type="hidden" name="id" th:value="${postToUpdate.getId()}">
+            
+            <!-- header -->
+            <input name="heading" type="text" id="heading" minlength="8" maxlength="150" size="50" required
+                   placeholder="Enter heading" th:value="${postToUpdate.getHeader()}">
+            <br><br>
+            
+            <!-- image select field -->
+            <div id="select-image-block">
+                <label for="image" id="image-label">Choose new image file</label>
+                <input name="image" type="file" id="image" accept="image/*" onchange="processSelectedFile(this)">
+                <br>
+            </div>
+            
+            <!-- delete previous image checkbox -->
+            <div th:if="${postToUpdate.getImageFileName() != null}">
+                <input type="checkbox" name="delete-previous-image" id="delete-previous-image"
+                       onchange="concealImageInput()">
+                Delete previous image
+                <br><br>
+            </div>
+            
+            <!-- post text -->
+            <textarea name="text" id="text" rows="8" cols="50" placeholder="Enter news text"
+                      th:text="${postToUpdate.getText()}"></textarea>
+            <br><br>
+            
+            <!-- date -->
+            <input name="date" type="date" id="date"
+                   th:value="${new java.sql.Date(postToUpdate.getCreationDate().getTime())}">
+            <br><br>
+            
+            <!-- reset button -->
+            <input id="reset" type="reset" value="Reset" onclick="resetCreateForm()">
+            <br><br>
+            
+            <!-- send button -->
+            <input id="send" type="submit" value="Send">
+        
+        </form>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+*
+{
+    box-sizing: border-box;
+}
+
+#heading
+{
+    font-weight: lighter;
+    font-size: 1em;
+    width: 30%;
+    background-color: lightgrey;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: gray;
+    padding: 15px;
+}
+
+#image-label
+{
+    font-weight: lighter;
+    font-size: 1em;
+    width: 30%;
+    background-color: #decd7f;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: gray;
+    display: block;
+    padding: 15px;
+}
+
+#image
+{
+    display: none;
+}
+
+#text
+{
+    font-weight: lighter;
+    font-size: 1.2em;
+    width: 30%;
+    background-color: lightgrey;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: gray;
+    padding: 15px;
+}
+
+#date
+{
+    font-weight: lighter;
+    font-size: 1.2em;
+    width: 30%;
+    background-color: lightgrey;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: gray;
+    padding: 15px;
+}
+
+#reset
+{
+    background-color: lightcoral;
+    width: 30%;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: black;
+    padding: 15px;
+}
+
+#send
+{
+    background-color: lightgreen;
+    width: 30%;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: black;
+    padding: 15px;
+}

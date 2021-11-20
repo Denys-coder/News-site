@@ -1,11 +1,14 @@
 package site.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import site.model.Post;
 import site.model.PostDao;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -68,17 +71,58 @@ public class AdminController
     }
     
     @GetMapping("/admin/update")
-    protected String updateForm(@RequestParam("id") int id)
+    protected String updateForm(@RequestParam("id") int id, Model model)
     {
-        return "/";
+        Post postToUpdate = PostDao.getPostById(id);
+        model.addAttribute("postToUpdate", postToUpdate);
+        return "update";
     }
     
     @PostMapping("/admin/update")
-    protected String update(@RequestParam("heading") String header,
-                            @RequestParam("image") MultipartFile image,
-                            @RequestParam("text") String text,
-                            @RequestParam("date") java.sql.Date sqlDate)
+    protected String update(@RequestParam(name = "id", required = false) String id,
+                            @RequestParam(name = "heading", required = false) String header,
+                            @RequestParam(name = "image", required = false) MultipartFile image,
+                            @RequestParam(name = "text", required = false) String text,
+                            @RequestParam(name = "date", required = false) java.sql.Date sqlDate,
+                            @RequestParam(name = "delete-previous-image", required = false) boolean deletePreviousImage
+    ) throws IOException
     {
-        return "/";
+        int idInteger = Integer.parseInt(id);
+        
+        // header
+        PostDao.updateHeader(header, idInteger);
+        
+        // image
+        if (deletePreviousImage) // delete image file
+        {
+            File file = new File("src/main/resources/static/images/img" + id);
+            file.delete();
+        }
+        if (image != null && !deletePreviousImage) // update image file
+        {
+            File file = new File("src/main/resources/static/images/img" + id);
+            try (OutputStream os = new FileOutputStream(file))
+            {
+                os.write(image.getBytes());
+            }
+        }
+        
+        // image name
+        if (deletePreviousImage) // delete image
+        {
+            PostDao.updateImageName(null, idInteger);
+        }
+        if (image != null && !deletePreviousImage && PostDao.getPostById(idInteger).getImageFileName() == null) // add image
+        {
+            PostDao.updateImageName("img" + idInteger, idInteger);
+        }
+        
+        // text
+        PostDao.updateText(text, idInteger);
+        
+        // date
+        PostDao.updateDate(sqlDate, idInteger);
+        
+        return "admin";
     }
 }
