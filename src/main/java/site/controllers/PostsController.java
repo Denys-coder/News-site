@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import site.model.Post;
 import site.model.PostDao;
+import site.model.PostOperations;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
@@ -14,7 +16,7 @@ import java.util.ArrayList;
 public class PostsController
 {
     @GetMapping("/posts")
-    public String showPosts(HttpServletRequest request, Model model, @RequestParam(value = "update", required = false) boolean update)
+    public String getShowPostsPage(HttpServletRequest request, Model model, @RequestParam(value = "update", required = false) boolean update)
     {
         if (update && request.isUserInRole("ADMIN"))
         {
@@ -22,24 +24,14 @@ public class PostsController
         }
         
         // truncate text to 150 characters and add " ..."
-        ArrayList<Post> posts = PostDao.getAllPosts();
-        for (Post post : posts)
-        {
-            String text = post.getText();
-            if (text.length() > 150)
-            {
-                text = text.substring(0, 151);
-                text = text.trim().concat(" ...");
-            }
-            post.setText(text);
-        }
-        
+        ArrayList<Post> posts = PostOperations.truncateEachPostTextTo150Symbols(PostDao.getAllPosts());
         model.addAttribute("posts", posts);
+        
         return "posts";
     }
     
     @GetMapping("/posts/{id}")
-    public String showPostById(Model model, @PathVariable("id") int id)
+    public String getShowPostByIdPage(Model model, @PathVariable("id") int id)
     {
         model.addAttribute("post", PostDao.getPostById(id));
         return "post";
