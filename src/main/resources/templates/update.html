@@ -15,12 +15,12 @@
             <!-- id -->
             <input type="hidden" name="id" th:value="${postToUpdate.getId()}">
             
-            <!-- header -->
-            <input name="heading" type="text" id="heading" minlength="8" maxlength="150" size="50" required
-                   placeholder="Enter heading" th:value="${postToUpdate.getHeader()}">
+            <!-- header input -->
+            <input name="header-input" type="text" id="header-input" minlength="8" maxlength="150" size="50" required
+                   placeholder="Enter header" th:value="${postToUpdate.getHeader()}">
             <br><br>
             
-            <!-- image select field -->
+            <!-- image input -->
             <div id="select-image-block">
                 <label for="image-input" id="image-label">Choose new image file</label>
                 <input name="image-input" type="file" id="image-input" accept="image/*" onchange="processSelectedFile(this)">
@@ -35,13 +35,13 @@
                 <br><br>
             </div>
             
-            <!-- post text -->
-            <textarea name="text" id="text" rows="8" cols="50" placeholder="Enter news text"
+            <!-- text input -->
+            <textarea name="text-input" id="text-input" rows="8" cols="50" placeholder="Enter news text"
                       th:text="${postToUpdate.getText()}"></textarea>
             <br><br>
             
-            <!-- date -->
-            <input name="date" type="date" id="date"
+            <!-- date input -->
+            <input name="date-input" type="date" id="date-input"
                    th:value="${new java.sql.Date(postToUpdate.getCreationDate().getTime())}">
             <br><br>
             

@@ -3,7 +3,7 @@
     box-sizing: border-box;
 }
 
-#heading
+#header-input
 {
     font-weight: lighter;
     font-size: 1em;
@@ -33,7 +33,7 @@
     display: none;
 }
 
-#text
+#text-input
 {
     font-weight: lighter;
     font-size: 1.2em;
@@ -45,7 +45,7 @@
     padding: 15px;
 }
 
-#date
+#date-input
 {
     font-weight: lighter;
     font-size: 1.2em;

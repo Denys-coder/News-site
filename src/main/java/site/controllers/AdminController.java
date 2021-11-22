@@ -31,10 +31,10 @@ public class AdminController
     }
     
     @PostMapping("/admin/create")
-    protected String saveCreatedPost(@RequestParam("heading") String header,
+    protected String saveCreatedPost(@RequestParam("header-input") String header,
                                     @RequestParam("image-input") MultipartFile image,
-                                    @RequestParam("text") String text,
-                                    @RequestParam("date") java.sql.Date sqlDate)
+                                    @RequestParam("text-input") String text,
+                                    @RequestParam("date-input") java.sql.Date sqlDate)
     {
         PostOperations.saveCreatedPost(header, image, text, sqlDate);
         return "redirect:/admin";
@@ -63,10 +63,10 @@ public class AdminController
     
     @PostMapping("/admin/update")
     protected String updatePost(@RequestParam(name = "id", required = false) String id,
-                            @RequestParam(name = "heading", required = false) String header,
+                            @RequestParam(name = "header-input", required = false) String header,
                             @RequestParam(name = "image-input", required = false) MultipartFile image,
-                            @RequestParam(name = "text", required = false) String text,
-                            @RequestParam(name = "date", required = false) java.sql.Date sqlDate,
+                            @RequestParam(name = "text-input", required = false) String text,
+                            @RequestParam(name = "date-input", required = false) java.sql.Date sqlDate,
                             @RequestParam(name = "delete-previous-image", required = false) boolean deletePreviousImage
     )
     {
