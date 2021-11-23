@@ -9,10 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 import site.model.Post;
 import site.model.PostDao;
 import site.model.PostOperations;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
 // do not confuse java.util.Date and java.sql.Date
 @Controller

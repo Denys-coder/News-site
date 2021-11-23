@@ -86,10 +86,12 @@ public class PostOperations
         for (Post post : posts)
         {
             String text = post.getText();
-            if (text.length() > 150)
+            if (text == null) continue;
+            
+            if (text.length() >= 150)
             {
-                text = text.substring(0, 151);
-                text = text.trim().concat(" ...");
+                text = text.substring(0, 150);
+                text = text.concat(" ...");
             }
             post.setText(text);
         }
