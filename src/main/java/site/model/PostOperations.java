@@ -1,7 +1,7 @@
 package site.model;
 
 import org.springframework.web.multipart.MultipartFile;
-
+import site.dao.PostDao;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

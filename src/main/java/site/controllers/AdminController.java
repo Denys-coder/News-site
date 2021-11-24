@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import site.model.Post;
-import site.model.PostDao;
+import site.dao.PostDao;
 import site.model.PostOperations;
 
 // do not confuse java.util.Date and java.sql.Date

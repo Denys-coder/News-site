@@ -1,7 +1,8 @@
-package site.model;
+package site.dao;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import site.model.Post;
 import java.sql.*;
 import java.util.ArrayList;
 

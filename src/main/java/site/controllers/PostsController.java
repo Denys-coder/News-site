@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import site.model.Post;
-import site.model.PostDao;
+import site.dao.PostDao;
 import site.model.PostOperations;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
