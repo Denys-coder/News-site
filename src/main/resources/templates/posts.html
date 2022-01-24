@@ -10,12 +10,12 @@
         <div th:each="post: ${posts}" class="post">
             
             <!-- header link -->
-            <a th:href="${'/posts/' + post.getId()}">
-                <p th:text="${post.getHeader()}" class="news-header"></p>
-            </a>
+            <div class="news-header">
+                <a th:href="${'/posts/' + post.getId()}" th:text="${post.getHeader()}" class="news-header-link"></a>
+            </div>
             
             <!-- part of the text -->
-            <p th:text="${post.getText()}"></p>
+            <p th:text="${post.getText()}" class="text"></p>
             
             <!-- date -->
             <p th:text="${'Date: ' + #dates.format(post.getCreationDate(),'dd/MMM/YYYY')}"></p>
@@ -31,6 +31,8 @@
                 <input type="hidden" name="id" th:value="${post.getId()}">
                 <button type="submit" id="update-button">Update</button>
             </form>
+            
+            <hr>
         
         </div>
     </body>

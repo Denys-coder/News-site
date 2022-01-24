@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import site.model.Post;
 import site.dao.PostDao;
-import site.model.PostOperations;
+import site.model.PostService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class PostsController
         }
         
         // truncate text to 150 characters and add " ..."
-        ArrayList<Post> posts = PostOperations.truncateEachPostTextTo150Symbols(PostDao.getAllPosts());
+        ArrayList<Post> posts = PostService.truncateEachPostTextTo150Symbols(PostDao.getAllPosts());
         model.addAttribute("posts", posts);
         
         return "posts";

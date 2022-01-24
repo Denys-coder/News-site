@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-public class PostOperations
+public class PostService
 {
     public static void saveCreatedPost(String header, MultipartFile image, String text, java.sql.Date sqlDate)
     {

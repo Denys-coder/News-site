@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import site.model.Post;
 import site.dao.PostDao;
-import site.model.PostOperations;
+import site.model.PostService;
 
 // do not confuse java.util.Date and java.sql.Date
 @Controller
@@ -32,7 +32,7 @@ public class AdminController
                                     @RequestParam("text-input") String text,
                                     @RequestParam("date-input") java.sql.Date sqlDate)
     {
-        PostOperations.saveCreatedPost(header, image, text, sqlDate);
+        PostService.saveCreatedPost(header, image, text, sqlDate);
         return "redirect:/admin";
     }
     
@@ -45,7 +45,7 @@ public class AdminController
     @PostMapping("/admin/delete")
     protected String deletePost(@RequestParam("id") int id)
     {
-        PostOperations.deletePost(id);
+        PostService.deletePost(id);
         return "redirect:/admin/update-or-delete";
     }
     
@@ -66,7 +66,7 @@ public class AdminController
                             @RequestParam(name = "delete-previous-image", required = false) boolean deletePreviousImage
     )
     {
-        PostOperations.updatePost(id, header, image, text, sqlDate, deletePreviousImage);
+        PostService.updatePost(id, header, image, text, sqlDate, deletePreviousImage);
         return "admin";
     }
 }

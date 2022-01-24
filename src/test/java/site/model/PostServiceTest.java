@@ -1,12 +1,11 @@
 package site.model;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Date;
 import static org.junit.jupiter.api.Assertions.*;
 
-class PostOperationsTest
+class PostServiceTest
 {
     
     @Test
@@ -41,7 +40,7 @@ class PostOperationsTest
         inputArray.add(new Post(1, "header", "imageName", longText.substring(0, 151), new Date())); // 151
         
         // when
-        ArrayList<Post> outputArray = PostOperations.truncateEachPostTextTo150Symbols(inputArray);
+        ArrayList<Post> outputArray = PostService.truncateEachPostTextTo150Symbols(inputArray);
         
         // then
         System.out.println(outputArray.get(0).getText());
