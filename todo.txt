@@ -1,3 +1,7 @@
 // TODO
 • add DTO layer
 • extract code from controllers to the service classes
+• make images add DBInit class that adds data in db on startup and make images folder dynamic
+• move /resources/static/images into folder that's not in the projects directory
+  and make Dockerfile mount images folder from disc into docker container
+• make refactoring

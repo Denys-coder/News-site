@@ -27,6 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
                 .password(passwordEncoder.encode("admin"))
                 .roles("ADMIN");
     }
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
