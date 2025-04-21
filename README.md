@@ -9,3 +9,16 @@ Screenshots:<br>
 ![](screenshots/4.jpg)
 ![](screenshots/5.jpg)
 ![](screenshots/6.jpg)
+
+Used technologies
+* Java
+* Spring Boot
+* - Core
+* - MVC
+* - Security (http basic)
+* JDBC
+* git
+* Maven
+* Docker, Docker-compose
+* SQL (Postgres)
+* JUnit
